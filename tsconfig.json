@@ -1,0 +1,12 @@
+{
+	"compilerOptions": {
+		"newLine": "lf",
+		"outDir": "assets/scripts/dist",
+		"target": "ES5",
+		"noEmitOnError": true,
+		"noImplicitAny": true
+	},
+	"files": [
+		"assets/scripts/src/index.ts"
+	]
+}
