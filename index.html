@@ -12,42 +12,43 @@
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="assets/css/style.css">
+		<script src="assets/scripts/dist/index.js"></script>
 	</head>
 	<body>
 		<!--[if lt IE 7]>
 			<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
 		<![endif]-->
-		<header>
+		<div id="header">
 			<h1>Pronoun Testing Grounds</h1>
-		</header>
-		<aside>
+		</div>
+		<div id="options">
 			<form>
 				<label for="name">Name: </label><input type="text" id="name" name="name"><br />
 				<!--Randomize the order of the example pronouns for the placeholder attribute-->
 				<label for="sub">Subjective: </label>
-					<input type="text" id="sub" name="sub" placeholder="They/She/He"><br />
+					<input type="text" id="sub" name="sub" placeholder="They/She/He" /><br />
 				<label for="obj">Objective: </label>
-					<input type="text" id="obj" name="obj" placeholder="Them/Her/He"><br />
+					<input type="text" id="obj" name="obj" placeholder="Them/Her/He" /><br />
 				<label for="pd">Possessive Determiner: </label>
-					<input type="text" id="pd" name="pd" placeholder="Their/Her/His"><br />
+					<input type="text" id="pd" name="pd" placeholder="Their/Her/His" /><br />
 				<label for="pp">Possessive Pronoun: </label>
-					<input type="text" id="pp" name="pp" placeholder="Theirs/Hers/His"><br />
+					<input type="text" id="pp" name="pp" placeholder="Theirs/Hers/His" /><br />
 				<label for="r">Reflexive: </label>
-					<input type="text" id="r" name="r" placeholder="Themself/Herself/Himself"><br />
+					<input type="text" id="r" name="r" placeholder="Themself/Herself/Himself" /><br />
 				<label for="ty">Type of Person: </label>
-					<input type="text" id="ty" name="ty" placeholder="Enby/Girl/Boy"><br />
-				<input type="radio" id="singular" name="number" value="single">
+					<input type="text" id="ty" name="ty" placeholder="Enby/Girl/Boy" /><br />
+				<input type="radio" id="singular" name="number" value="single"/>
 					<label for="singular">Singular</label>
-				<input type="radio" id="plural" name="number" value="plural">
+				<input type="radio" id="plural" name="number" value="plural" />
 					<label for="plural">Plural</label><br />
-				<input type="submit" value="Submit">
+				<input type="submit" value="Submit" onclick="tellStory();" />
 			</form>
-		</aside>
-		<article>
+		</div>
+		<div id="story">
 			Hello! Today I met a Enby who goes by Mike. They have a wonderful personality. That smile of Theirs really makes me
 			happy. I could talk to Them all day although They don't talk about Themself much. I wonder if Their day has been
 			wonderful. I hope so!
-		</article>
-		<script src="" async defer></script>
+		</div>
+		<script async defer>init();</script>
 	</body>
 </html>

@@ -2,7 +2,7 @@
 	"compilerOptions": {
 		"newLine": "lf",
 		"outDir": "assets/scripts/dist",
-		"target": "ES5",
+		"target": "ES3",
 		"noEmitOnError": true,
 		"noImplicitAny": true
 	},
