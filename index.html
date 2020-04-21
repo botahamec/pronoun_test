@@ -23,24 +23,43 @@
 		</div>
 		<div id="options">
 			<form>
-				<label for="name">Name: </label><input type="text" id="name" name="name"><br />
+				<div class="formInput">
+					<label for="name">Name: </label><br />
+					<input type="text" id="name" name="name"><br />
+				</div>
 				<!--Randomize the order of the example pronouns for the placeholder attribute-->
-				<label for="sub">Subjective: </label>
+				<div class="formInput">
+					<label for="sub">Subjective: </label><br />
 					<input type="text" id="sub" name="sub" placeholder="They/She/He" /><br />
-				<label for="obj">Objective: </label>
+				</div>
+				<div class="formInput">
+					<label for="obj">Objective: </label><br />
 					<input type="text" id="obj" name="obj" placeholder="Them/Her/He" /><br />
-				<label for="pd">Possessive Determiner: </label>
+				</div>
+				<div class="formInput">
+					<label for="pd">Possessive Determiner: </label><br />
 					<input type="text" id="pd" name="pd" placeholder="Their/Her/His" /><br />
-				<label for="pp">Possessive Pronoun: </label>
+				</div>
+				<div class="formInput">
+					<label for="pp">Possessive Pronoun: </label><br />
 					<input type="text" id="pp" name="pp" placeholder="Theirs/Hers/His" /><br />
-				<label for="r">Reflexive: </label>
+				</div>
+				<div class="formInput">
+					<label for="r">Reflexive: </label><br />
 					<input type="text" id="r" name="r" placeholder="Themself/Herself/Himself" /><br />
-				<label for="ty">Type of Person: </label>
+				</div>
+				<div class="formInput">
+					<label for="ty">Type of Person: </label><br />
 					<input type="text" id="ty" name="ty" placeholder="Enby/Girl/Boy" /><br />
-				<input type="radio" id="singular" name="number" value="single"/>
-					<label for="singular">Singular</label>
-				<input type="radio" id="plural" name="number" value="plural" />
+				</div>
+				<div class="formInput">
+					<input type="radio" id="singular" name="number" value="single"/>
+					<label for="singular">Singular</label><br />
+				</div>
+				<div class="formInput">
+					<input type="radio" id="plural" name="number" value="plural" />
 					<label for="plural">Plural</label><br />
+				</div>
 				<input type="submit" value="Submit" onclick="tellStory();" />
 			</form>
 		</div>
