@@ -22,7 +22,7 @@
 			<h1>Pronoun Testing Grounds</h1>
 		</div>
 		<div id="options">
-			<form>
+			<form action="" id="pronoun_input">
 				<div class="formInput">
 					<label for="name">Name: </label><br />
 					<input type="text" id="name" name="name"><br />
@@ -34,7 +34,7 @@
 				</div>
 				<div class="formInput">
 					<label for="obj">Objective: </label><br />
-					<input type="text" id="obj" name="obj" placeholder="Them/Her/He" /><br />
+					<input type="text" id="obj" name="obj" placeholder="Them/Her/Him" /><br />
 				</div>
 				<div class="formInput">
 					<label for="pd">Possessive Determiner: </label><br />
@@ -52,14 +52,10 @@
 					<label for="ty">Type of Person: </label><br />
 					<input type="text" id="ty" name="ty" placeholder="Enby/Girl/Boy" /><br />
 				</div>
-				<div class="formInput">
-					<input type="radio" id="singular" name="number" value="single"/>
-					<label for="singular">Singular</label><br />
-				</div>
-				<div class="formInput">
-					<input type="radio" id="plural" name="number" value="plural" />
+				<input type="radio" id="singular" name="gnumber" value="single"/>
+					<label for="singular">Singular</label>
+				<input type="radio" id="plural" name="gnumber" value="plural" />
 					<label for="plural">Plural</label><br />
-				</div>
 				<input type="submit" value="Submit" onclick="tellStory();" />
 			</form>
 		</div>
