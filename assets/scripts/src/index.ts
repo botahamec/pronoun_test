@@ -26,9 +26,6 @@ class PronounSet {
 	/** Enby/Girl/Boy */
 	public personType: string;
 
-	/** True for are, False for is */
-	public grammaticalNumber: boolean;
-
 	public constructor(name: string,
 	                   subjective: string,
 					   objective: string,
@@ -36,7 +33,7 @@ class PronounSet {
 					   possessivePronoun: string,
 					   reflexive: string,
 					   personType: string,
-					   grammaticalNumber: boolean) {
+					   public grammaticalNumber: boolean) {
 		this.name = name.toLowerCase();
 		this.subjective = subjective.toLowerCase();
 		this.objective = objective.toLowerCase();
@@ -86,7 +83,25 @@ class Story {
 		nStory = applyFilter(nStory, "possPro", s => s.possessivePronoun);
 		nStory = applyFilter(nStory, "reflexive", s => s.reflexive);
 		nStory = applyFilter(nStory, "personType", s => s.personType);
-		nStory = applyFilter(nStory, "article", s => s.getArticle());
+
+		let start = 0;
+		let end = 0;
+		while (true) {
+			start = nStory.indexOf('{');
+			end = nStory.indexOf('}');
+
+			if (start == -1 || end == -1) {break;}
+
+			const choicesStr = nStory.substring(start, end + 1);
+			const choices = nStory.substring(start + 1, end).split('/', 2);
+			let choice : string;
+			if (pronouns.grammaticalNumber) {
+				choice = choices[1];
+			} else {
+				choice = choices[0];
+			}
+			nStory = nStory.replace(choicesStr, choice);
+		}
 
 		return nStory;
 	}
@@ -103,11 +118,9 @@ function randomElement<T>(list: Array<T>) : T {
 }
 
 const STORIES: string[] = [
-	"Hey! This is my friend, {Name}. {Subjective} is a good {personType}. " +
-	"You better be nice to {Objective} or {PossDet} friend is " +
-	"gonna be real mad. Kidding! {Subjective} can look after {reflexive}. " +
-	"But now you gotta be nice to me, or else {Name} {article} gonna be mad. " +
-	"No, you can't be my best friend. I'm {possPro}!"
+	"Hey! This is my friend, {Name}. {Subjective} {is/are} a good {personType}. You better be nice to {objective} or {possDet} friend is gonna be real mad. Kidding! {Subjective} can look after {reflexive}. But now you gotta be nice to me, or else {Name} is gonna be mad. No, you can't be my best friend. I'm {possPro}!",
+	"Have you seen that new {personType}? {PossDet} name is {Name}. {Subjective} {seems/seem} pretty cool. But {subjective} {is/are} not full of {reflexive}. We should go talk to {objective}. That desk over there is {possPro}. Let's go meet {subjective}!",
+	"{Name} got up this morning. {Subjective} brushed {possDet} teeth. It's good {subjective} {takes/take} care of {reflexive}. {PossDet} friends look after {subjective} too. Now {subjective} {wants/want} a shower. That shower is {possPro}. Time to get to work. This concludes our look at the coolest {personType} around.",
 ]
 
 // Gender-neutral reflexive pronouns
