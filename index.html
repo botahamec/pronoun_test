@@ -52,11 +52,13 @@
 					<label for="ty">Type of Person: </label><br />
 					<input type="text" id="ty" name="ty" placeholder="Enby/Girl/Boy" /><br />
 				</div>
-				<input type="radio" id="singular" name="gnumber" value="single"/>
-					<label for="singular">Singular</label>
-				<input type="radio" id="plural" name="gnumber" value="plural" />
-					<label for="plural">Plural</label><br />
-				<input type="submit" value="Submit" onclick="tellStory();" />
+				<div class="formInput">
+					<input type="radio" id="singular" name="gnumber" value="single"/>
+						<label for="singular">Singular</label>
+					<input type="radio" id="plural" name="gnumber" value="plural" />
+						<label for="plural">Plural</label><br />
+				</div>
+				<input type="submit" class="formInput" value="Submit" onclick="tellStory();" />
 			</form>
 		</div>
 		<div id="story">

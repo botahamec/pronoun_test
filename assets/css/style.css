@@ -1,3 +1,28 @@
 #options {
-	float:left;
+	background-color: rgb(95, 95, 233);
+	padding: 1%;
+	margin: 1%;
+	float: left;
+}
+
+#story {
+	background-color: rgb(243, 131, 131);
+	padding: 1%;
+	margin: 1%;
+	margin-left: 300px;
+	margin-top: 2%;
+}
+
+#header {
+	background-color: antiquewhite;
+	padding: 1%;
+	margin: 1%;
+}
+.formInput {
+	padding: 2%;
+}
+
+body {
+	background-color: rgb(181, 114, 245);
+	font-family: Arial, Helvetica, sans-serif;
 }
