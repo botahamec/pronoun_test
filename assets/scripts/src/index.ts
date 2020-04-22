@@ -5,19 +5,8 @@
  */
 class PronounSet {
 
-	public constructor(subjective: string,
-					   objective: string,
-					   possessiveDeterminer: string,
-					   possessivePronoun: string,
-					   reflexive: string,
-					   personType: string) {
-		this.subjective = subjective;
-		this.objective = objective;
-		this.possessiveDeterminer = possessiveDeterminer;
-		this.possessivePronoun = possessivePronoun;
-		this.reflexive = reflexive;
-		this.personType = personType;
-	}
+	/** A name */
+	public name: string;
 
 	/** They/She/He */
 	public subjective: string;
@@ -36,6 +25,71 @@ class PronounSet {
 
 	/** Enby/Girl/Boy */
 	public personType: string;
+
+	/** True for are, False for is */
+	public grammaticalNumber: boolean;
+
+	public constructor(name: string,
+	                   subjective: string,
+					   objective: string,
+					   possessiveDeterminer: string,
+					   possessivePronoun: string,
+					   reflexive: string,
+					   personType: string,
+					   grammaticalNumber: boolean) {
+		this.name = name.toLowerCase();
+		this.subjective = subjective.toLowerCase();
+		this.objective = objective.toLowerCase();
+		this.possessiveDeterminer = possessiveDeterminer.toLowerCase();
+		this.possessivePronoun = possessivePronoun.toLowerCase();
+		this.reflexive = reflexive.toLowerCase();
+		this.personType = personType.toLowerCase();
+	}
+
+	public getArticle(): string {
+		if (this.grammaticalNumber) {
+			return "are";
+		} else {
+			return "is";
+		}
+	}
+}
+
+class Story {
+
+	private story: string;
+
+	constructor(story: string) {
+		this.story = story;
+	}
+
+	private static capitalize(str: string): string {
+		const firstChar = str[0].toUpperCase();
+		const stringRest = str.substring(1);
+		return firstChar + stringRest;
+	}
+
+	public tellStory(pronouns: PronounSet): string {
+
+		// Applies a filter to the string to tell the story
+		// Automatically creates uppercase versions of each filter
+		const applyFilter = (oldString: string, name: string,
+		                     fn: (set: PronounSet) => string) =>
+			oldString.replace(new RegExp(`{${name}}`, "g"), fn(pronouns))
+			         .replace(new RegExp(`{${Story.capitalize(name)}}`, "g"),
+					          Story.capitalize(fn(pronouns)));
+
+		let nStory = applyFilter(this.story, "name", s => s.name);
+		nStory = applyFilter(nStory, "subjective", s => s.subjective);
+		nStory = applyFilter(nStory, "objective", s => s.objective);
+		nStory = applyFilter(nStory, "possDet", s => s.possessiveDeterminer);
+		nStory = applyFilter(nStory, "possPro", s => s.possessivePronoun);
+		nStory = applyFilter(nStory, "reflexive", s => s.reflexive);
+		nStory = applyFilter(nStory, "personType", s => s.personType);
+		nStory = applyFilter(nStory, "article", s => s.getArticle());
+
+		return nStory;
+	}
 }
 
 // ------------------------------ CONSTANTS -----------------------------------
@@ -47,6 +101,14 @@ class PronounSet {
 function randomElement<T>(list: Array<T>) : T {
 	return list[Math.floor(Math.random() * list.length)];
 }
+
+const STORIES: string[] = [
+	"Hey! This is my friend, {Name}. {Subjective} is a good {personType}. " +
+	"You better be nice to {Objective} or {PossDet} friend is " +
+	"gonna be real mad. Kidding! {Subjective} can look after {reflexive}. " +
+	"But now you gotta be nice to me, or else {Name} {article} gonna be mad. " +
+	"No, you can't be my best friend. I'm {possPro}!"
+]
 
 // Gender-neutral reflexive pronouns
 const ENBY_REFLEXIVE: string[] = [
@@ -62,18 +124,19 @@ const MALE_REFLEXIVE: string[] = ["Himself", "Hisself"];
 let DEFAULT_PRONOUN_SETS: PronounSet[] = [
 
 	new PronounSet(
-		"They", "Them", "Their", "Theirs",
-		randomElement(ENBY_REFLEXIVE), "Enby"
+		"", "They", "Them", "Their", "Theirs",
+		randomElement(ENBY_REFLEXIVE), "Enby", false
 	),
 
-	new PronounSet("She", "Her", "Her", "Hers", "Herself", "Girl"),
+	new PronounSet("", "She", "Her", "Her", "Hers", "Herself", "Girl", false),
 
 	new PronounSet(
-		"He", "Him", "His", "His", randomElement(MALE_REFLEXIVE), "Boy"
+		"", "He", "Him", "His", "His",
+		randomElement(MALE_REFLEXIVE), "Boy", false
 	)
 ];
 
-let story: HTMLElement; // shows a story
+let storySection: HTMLElement; // shows a story
 
 // the pronoun input
 let nameInput: HTMLInputElement;
@@ -84,8 +147,9 @@ let possessivePronoun: HTMLInputElement;
 let reflexive: HTMLInputElement;
 let personType: HTMLInputElement;
 let numericGrammar: NodeListOf<HTMLInputElement>;
+let plural: HTMLInputElement;
 
-// ------------------------------ FUNCTIONS -----------------------------------
+// -------------------------- PRIVATE FUNCTIONS -------------------------------
 
 /**
  * Returns a shuffle of an array
@@ -100,8 +164,7 @@ function shuffle<T>(list: Array<T>) {
 
 function setInputElements() {
 	const getElement = (id: string) => document.getElementById(id);
-	const getByName = (name: string) => document.getElementsByName(name);
-	story = getElement("story");
+	storySection = getElement("story");
 	nameInput = <HTMLInputElement>getElement("name");
 	subjective = <HTMLInputElement>getElement("sub");
 	objective = <HTMLInputElement>getElement("obj");
@@ -109,7 +172,7 @@ function setInputElements() {
 	possessivePronoun = <HTMLInputElement>getElement("pp");
 	reflexive = <HTMLInputElement>getElement("r");
 	personType = <HTMLInputElement>getElement("ty");
-	numericGrammar = <NodeListOf<HTMLInputElement>>getByName("gnumber");
+	plural = <HTMLInputElement> getElement("plural");
 }
 
 function setPlaceholders() {
@@ -132,14 +195,33 @@ function setPlaceholders() {
 	setPlaceholder(personType, e => e.personType);
 }
 
+// --------------------------- PUBLIC FUNCTIONS -------------------------------
+
 /**
  * Intializes the site
  */
 function init() {
 	setInputElements(); // get elements
-	story.textContent = ""; // set story as blank
+	storySection.textContent = ""; // set story as blank
 	shuffle(DEFAULT_PRONOUN_SETS); // shuffle the pronoun list
 	setPlaceholders(); // set placeholder hints
 }
 
-function tellStory() {}
+function tellStory() {
+
+	// get pronouns
+	let pronouns = new PronounSet(
+		nameInput.value,
+		subjective.value,
+		objective.value,
+		possessiveDeterminer.value,
+		possessivePronoun.value,
+		reflexive.value,
+		personType.value,
+		plural.checked
+	);
+
+	let story = new Story(randomElement(STORIES));
+
+	storySection.textContent = story.tellStory(pronouns);
+}
