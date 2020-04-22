@@ -21,50 +21,52 @@
 		<div id="header">
 			<h1>Pronoun Testing Grounds</h1>
 		</div>
-		<div id="options">
-			<form onsubmit="return false" id="pronoun_input">
-				<div class="formInput">
-					<label for="name">Name: </label><br />
-					<input type="text" id="name" name="name"><br />
-				</div>
-				<!--Randomize the order of the example pronouns for the placeholder attribute-->
-				<div class="formInput">
-					<label for="sub">Subjective: </label><br />
-					<input type="text" id="sub" name="sub" placeholder="They/She/He" /><br />
-				</div>
-				<div class="formInput">
-					<label for="obj">Objective: </label><br />
-					<input type="text" id="obj" name="obj" placeholder="Them/Her/Him" /><br />
-				</div>
-				<div class="formInput">
-					<label for="pd">Possessive Determiner: </label><br />
-					<input type="text" id="pd" name="pd" placeholder="Their/Her/His" /><br />
-				</div>
-				<div class="formInput">
-					<label for="pp">Possessive Pronoun: </label><br />
-					<input type="text" id="pp" name="pp" placeholder="Theirs/Hers/His" /><br />
-				</div>
-				<div class="formInput">
-					<label for="r">Reflexive: </label><br />
-					<input type="text" id="r" name="r" placeholder="Themself/Herself/Himself" /><br />
-				</div>
-				<div class="formInput">
-					<label for="ty">Type of Person: </label><br />
-					<input type="text" id="ty" name="ty" placeholder="Enby/Girl/Boy" /><br />
-				</div>
-				<div class="formInput">
-					<input type="radio" id="singular" name="gnumber" value="single"/>
-						<label for="singular">Singular</label>
-					<input type="radio" id="plural" name="gnumber" value="plural" />
-						<label for="plural">Plural</label><br />
-				</div>
-				<input type="submit" class="formInput" value="Submit" onclick="tellStory();" />
-			</form>
-		</div>
-		<div id="story">
-			Hello! Today I met a Enby who goes by Mike. They have a wonderful personality. That smile of Theirs really makes me
-			happy. I could talk to Them all day although They don't talk about Themself much. I wonder if Their day has been
-			wonderful. I hope so!
+		<div id="container">
+			<div id="options">
+				<form onsubmit="return false" id="pronoun_input">
+					<div class="formInput">
+						<label for="name">Name: </label><br />
+						<input type="text" id="name" name="name"><br />
+					</div>
+					<!--Randomize the order of the example pronouns for the placeholder attribute-->
+					<div class="formInput">
+						<label for="sub">Subjective: </label><br />
+						<input type="text" id="sub" name="sub" placeholder="They/She/He" /><br />
+					</div>
+					<div class="formInput">
+						<label for="obj">Objective: </label><br />
+						<input type="text" id="obj" name="obj" placeholder="Them/Her/Him" /><br />
+					</div>
+					<div class="formInput">
+						<label for="pd">Possessive Determiner: </label><br />
+						<input type="text" id="pd" name="pd" placeholder="Their/Her/His" /><br />
+					</div>
+					<div class="formInput">
+						<label for="pp">Possessive Pronoun: </label><br />
+						<input type="text" id="pp" name="pp" placeholder="Theirs/Hers/His" /><br />
+					</div>
+					<div class="formInput">
+						<label for="r">Reflexive: </label><br />
+						<input type="text" id="r" name="r" placeholder="Themself/Herself/Himself" /><br />
+					</div>
+					<div class="formInput">
+						<label for="ty">Type of Person: </label><br />
+						<input type="text" id="ty" name="ty" placeholder="Enby/Girl/Boy" /><br />
+					</div>
+					<div class="formInput">
+						<input type="radio" id="singular" name="gnumber" value="single"/>
+							<label for="singular">Singular</label>
+						<input type="radio" id="plural" name="gnumber" value="plural" />
+							<label for="plural">Plural</label><br />
+					</div>
+					<input type="submit" class="formInput" value="Submit" onclick="tellStory();" />
+				</form>
+			</div>
+			<div id="story">
+				Hello! Today I met a Enby who goes by Mike. They have a wonderful personality. That smile of Theirs really makes me
+				happy. I could talk to Them all day although They don't talk about Themself much. I wonder if Their day has been
+				wonderful. I hope so!
+			</div>
 		</div>
 		<script async defer>init();</script>
 	</body>

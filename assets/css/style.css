@@ -1,23 +1,31 @@
 #options {
-	background-color: rgb(95, 95, 233);
+	background-color: rgb(133, 133, 255);
 	padding: 1%;
 	margin: 1%;
-	float: left;
+	box-shadow: rgb(91, 62, 123) 6px 6px 6px;
 }
 
 #story {
-	background-color: rgb(243, 131, 131);
+	background-color: rgb(255, 142, 142);
 	padding: 1%;
 	margin: 1%;
-	margin-left: 300px;
-	margin-top: 2%;
+	width: 96%;
+	box-shadow: rgb(91, 62, 123) 6px 6px 6px;
 }
 
 #header {
-	background-color: antiquewhite;
+	background-color: rgb(185, 185, 185);
 	padding: 1%;
 	margin: 1%;
+	box-shadow: rgb(91, 62, 123) 6px 6px 6px;
 }
+
+@media only screen and (min-width: 600px) {
+	#container {
+	    display: flex;
+	}
+}
+
 .formInput {
 	padding: 2%;
 }
