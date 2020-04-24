@@ -1,3 +1,83 @@
 #options {
-	float:left;
+	background-color: rgb(133, 133, 255);
+	padding: 1%;
+	margin: 1%;
+	box-shadow: rgb(91, 62, 123) 6px 6px 6px;
+}
+
+#story {
+	background-color: rgb(255, 142, 142);
+	padding: 1%;
+	margin: 1%;
+	width: 96%;
+	box-shadow: rgb(91, 62, 123) 6px 6px 6px;
+}
+
+#header {
+	background-color: rgb(185, 185, 185);
+	padding: 1%;
+	margin: 1%;
+	box-shadow: rgb(91, 62, 123) 6px 6px 6px;
+}
+
+#footer {
+	background-color: rgb(238, 228, 88);
+	padding: 1%;
+	margin: 1%;
+	box-shadow: rgb(91, 62, 123) 6px 6px 6px;
+}
+
+.help {
+	position: absolute;
+	background-color: rgb(95, 228, 106);
+	padding: 2px;
+	box-shadow: rgb(95, 65, 107) 2px 2px 2px;
+	display: none;
+}
+
+@media only screen and (min-width: 600px) {
+	#container {
+	    display: flex;
+	}
+
+	#nameBox:hover > #nameHelp {
+		display: block;
+	}
+
+	#subBox:hover > #subHelp {
+		display: block;
+	}
+
+	#objBox:hover > #objHelp {
+		display: block;
+	}
+
+	#pdBox:hover > #pdHelp {
+		display: block;
+	}
+
+	#ppBox:hover > #ppHelp {
+		display: block;
+	}
+
+	#rBox:hover > #rHelp {
+		display: block;
+	}
+
+	#tyBox:hover > #tyHelp {
+		display: block;
+	}
+
+	#gBox:hover > #gHelp {
+		display: block;
+	}
+}
+
+.formInput {
+	padding: 2%;
+}
+
+body {
+	background-color: rgb(181, 114, 245);
+	font-family: Arial, Helvetica, sans-serif;
 }
