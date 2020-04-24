@@ -3,6 +3,7 @@
 	padding: 1%;
 	margin: 1%;
 	box-shadow: rgb(91, 62, 123) 6px 6px 6px;
+	min-width: 165px;
 }
 
 #story {
@@ -33,6 +34,11 @@
 	padding: 2px;
 	box-shadow: rgb(95, 65, 107) 2px 2px 2px;
 	display: none;
+}
+
+.formInput {
+	padding: 2%;
+	min-width: fit-content;
 }
 
 @media only screen and (min-width: 600px) {
@@ -73,11 +79,11 @@
 	}
 }
 
-.formInput {
-	padding: 2%;
-}
-
 body {
 	background-color: rgb(181, 114, 245);
 	font-family: Arial, Helvetica, sans-serif;
+}
+
+input {
+	min-width: fit-content;
 }
