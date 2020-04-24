@@ -2,7 +2,7 @@
 /**
  * A set of Pronouns
  */
-var PronounSet = (function () {
+var PronounSet = /** @class */ (function () {
     function PronounSet(name, subjective, objective, possessiveDeterminer, possessivePronoun, reflexive, personType, grammaticalNumber) {
         this.grammaticalNumber = grammaticalNumber;
         this.name = name.toLowerCase();
@@ -22,8 +22,8 @@ var PronounSet = (function () {
         }
     };
     return PronounSet;
-})();
-var Story = (function () {
+}());
+var Story = /** @class */ (function () {
     function Story(story) {
         this.story = story;
     }
@@ -68,7 +68,7 @@ var Story = (function () {
         return nStory;
     };
     return Story;
-})();
+}());
 // ------------------------------ CONSTANTS -----------------------------------
 /**
  * Gets a random element of an array
@@ -112,11 +112,11 @@ var plural;
  * @param list The list to shuffle
  */
 function shuffle(list) {
+    var _a;
     for (var i = list.length - 1; i > 0; i--) {
         var j = Math.floor(Math.random() * (i + 1));
         _a = [list[j], list[i]], list[i] = _a[0], list[j] = _a[1];
     }
-    var _a;
 }
 function setInputElements() {
     var getElement = function (id) { return document.getElementById(id); };
@@ -164,3 +164,12 @@ function tellStory() {
     var story = new Story(randomElement(STORIES));
     storySection.textContent = story.tellStory(pronouns);
 }
+function followMouse(event) {
+    var elements = document.getElementsByClassName("help");
+    for (var i = 0; i < elements.length; i++) {
+        var element = elements.item(i);
+        element.style.left = scrollX + event.clientX + 10 + "px";
+        element.style.top = scrollY + event.clientY + 10 + "px";
+    }
+}
+document.onmousemove = followMouse;

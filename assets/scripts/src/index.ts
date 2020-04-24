@@ -238,3 +238,14 @@ function tellStory() {
 
 	storySection.textContent = story.tellStory(pronouns);
 }
+
+function followMouse(event: MouseEvent) {
+	let elements = document.getElementsByClassName("help");
+	for (let i = 0; i < elements.length; i++) {
+		let element = <HTMLElement> elements.item(i);
+		element.style.left = scrollX + event.clientX + 10 + "px"
+		element.style.top = scrollY + event.clientY + 10 + "px";
+	}
+}
+
+document.onmousemove = followMouse;

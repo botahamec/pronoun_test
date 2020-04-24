@@ -24,36 +24,44 @@
 		<div id="container">
 			<div id="options">
 				<form onsubmit="return false" id="pronoun_input">
-					<div class="formInput">
+					<div class="formInput" id="nameBox">
+						<div class="help" id="nameHelp">Your name. If you haven't picked one, feel free to try one on 😀</div>
 						<label for="name">Name: </label><br />
 						<input type="text" id="name" name="name"><br />
 					</div>
 					<!--Randomize the order of the example pronouns for the placeholder attribute-->
-					<div class="formInput">
+					<div class="formInput" id="subBox">
+						<div class="help" id="subHelp">Used for the person doing/being</div>
 						<label for="sub">Subjective: </label><br />
 						<input type="text" id="sub" name="sub" placeholder="They/She/He" /><br />
 					</div>
-					<div class="formInput">
+					<div class="formInput" id="objBox">
+						<div class = "help" id="objHelp">Used for the person affected by an action</div>
 						<label for="obj">Objective: </label><br />
 						<input type="text" id="obj" name="obj" placeholder="Them/Her/Him" /><br />
 					</div>
-					<div class="formInput">
+					<div class="formInput" id="pdBox">
+						<div class="help" id="pdHelp">Used to desribe something as belonging to someone</div>
 						<label for="pd">Possessive Determiner: </label><br />
 						<input type="text" id="pd" name="pd" placeholder="Their/Her/His" /><br />
 					</div>
-					<div class="formInput">
+					<div class="formInput" id="ppBox">
+						<div class="help" id="ppHelp">Used to desribe something as belonging to someone*</div>
 						<label for="pp">Possessive Pronoun: </label><br />
 						<input type="text" id="pp" name="pp" placeholder="Theirs/Hers/His" /><br />
 					</div>
-					<div class="formInput">
+					<div class="formInput" id="rBox">
+						<div class="help" id="rHelp">Used to describe the action one takes as happening to oneself</div>
 						<label for="r">Reflexive: </label><br />
 						<input type="text" id="r" name="r" placeholder="Themself/Herself/Himself" /><br />
 					</div>
-					<div class="formInput">
+					<div class="formInput" id="tyBox">
+						<div class="help" id="tyHelp">Used to describe the gender</div>
 						<label for="ty">Type of Person: </label><br />
 						<input type="text" id="ty" name="ty" placeholder="Enby/Girl/Boy" /><br />
 					</div>
-					<div class="formInput">
+					<div class="formInput" id="gBox">
+						<div class="help" id="gHelp">Used to describe the grammatical number**</div>
 						<input type="radio" id="singular" name="gnumber" value="single"/>
 							<label for="singular">Singular</label>
 						<input type="radio" id="plural" name="gnumber" value="plural" />
@@ -67,6 +75,28 @@
 				happy. I could talk to Them all day although They don't talk about Themself much. I wonder if Their day has been
 				wonderful. I hope so!
 			</div>
+		</div>
+		<div id="footer">
+			<p>Written for 43 North's Code:Buffalo Hackathon!</p>
+			<p>See this project on GitHub: <a href="https://github.com/mrw1593/pronoun_test">https://github.com/mrw1593/pronoun_test</a></p>
+			<p>Visit me on Github: <a href="https://github.com/mrw1593">https://github.com/mrw1593</a></p>
+			<p>
+				* You may be wondering what the difference between the
+				possesseive determiner and the possessive pronoun is. That's a
+				good question. There doesn't seem to be one. I think it's a
+				remnant of Old English. I wish it didn't exist because it's
+				much harder to come up with stories with it in there. General
+				rule of thumb: The possessive determiner comes before the verb,
+				and the possessive pronoun comes after the verb.
+			</p>
+			<p>** The plural is mostly used for people who use they/them
+				pronouns. Some people like to use singular verbs with these
+				pronouns. For example, "They is happy" vs "They are happy".
+				Another example: "They wakes up in the morning" vs "They wake
+				up in the morning". If you're confused about which one to use,
+				then unless you're using they/them pronouns, you're probably
+				gonna want "singular".
+			</p>
 		</div>
 		<script async defer>init();</script>
 	</body>
