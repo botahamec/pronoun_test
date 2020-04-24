@@ -165,6 +165,7 @@ function tellStory() {
     storySection.textContent = story.tellStory(pronouns);
 }
 function followMouse(event) {
+    event = event || window.event;
     var elements = document.getElementsByClassName("help");
     for (var i = 0; i < elements.length; i++) {
         var element = elements.item(i);

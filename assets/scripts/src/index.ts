@@ -240,6 +240,7 @@ function tellStory() {
 }
 
 function followMouse(event: MouseEvent) {
+	event = event || <MouseEvent> window.event;
 	let elements = document.getElementsByClassName("help");
 	for (let i = 0; i < elements.length; i++) {
 		let element = <HTMLElement> elements.item(i);
