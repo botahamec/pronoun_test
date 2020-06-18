@@ -5,6 +5,12 @@
 	box-shadow: rgb(91, 62, 123) 6px 6px 6px;
 }
 
+.textBox {
+	display: table-cell;
+	width: 90%;
+	margin-right: 50%;
+}
+
 #story {
 	background-color: rgb(255, 142, 142);
 	padding: 1%;
@@ -75,6 +81,7 @@
 
 .formInput {
 	padding: 2%;
+	display: table;
 }
 
 body {
