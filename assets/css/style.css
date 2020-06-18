@@ -3,12 +3,13 @@
 	padding: 1%;
 	margin: 1%;
 	box-shadow: rgb(91, 62, 123) 6px 6px 6px;
+	display: inline-block;
 }
 
 .textBox {
-	display: table-cell;
-	width: 90%;
-	margin-right: 50%;
+	background-color: white;
+	border-style: solid;
+	border-color: rgb(194, 194, 255);
 }
 
 #story {
@@ -81,7 +82,6 @@
 
 .formInput {
 	padding: 2%;
-	display: table;
 }
 
 body {
