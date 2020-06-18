@@ -18,5 +18,4 @@ The hover text for hints is secretly always following the mouse in the backgroun
 * Allow the user to type in a custom message
 * Have the story load on startup if the pronouns are present
 * Make certain stories which work without some of the pronouns
-* Subtly change the textbox color if a certain pronoun isn't specified
 * Add more stories
