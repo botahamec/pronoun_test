@@ -51,7 +51,7 @@ var Story = /** @class */ (function () {
         while (true) {
             start = nStory.indexOf('{');
             end = nStory.indexOf('}');
-            if (start == -1 || end == -1) {
+            if (start === -1 || end === -1) {
                 break;
             }
             var choicesStr = nStory.substring(start, end + 1);
@@ -132,6 +132,14 @@ function setInputElements() {
     reflexive = getElement("r");
     personType = getElement("ty");
     plural = getElement("plural");
+    var setChangeEvent = function (box) { return box.onchange = checkFilled; };
+    setChangeEvent(nameInput);
+    setChangeEvent(subjective);
+    setChangeEvent(objective);
+    setChangeEvent(possessiveDeterminer);
+    setChangeEvent(possessivePronoun);
+    setChangeEvent(reflexive);
+    setChangeEvent(personType);
 }
 function setPlaceholders() {
     // a string from the result of a function mapped on DEFAULT_PRONOUN_SET
@@ -151,16 +159,16 @@ function setPlaceholders() {
     setPlaceholder(reflexive, function (e) { return e.reflexive; });
     setPlaceholder(personType, function (e) { return e.personType; });
 }
-// --------------------------- PUBLIC FUNCTIONS -------------------------------
-/**
- * Intializes the site
- */
-function init() {
-    setInputElements(); // get elements
-    storySection.textContent = ""; // set story as blank
-    shuffle(DEFAULT_PRONOUN_SETS); // shuffle the pronoun list
-    setPlaceholders(); // set placeholder hints
+function checkFilled(event) {
+    var box = event.target;
+    if (box.value === "") {
+        box.style.backgroundColor = "pink";
+    }
+    else {
+        box.style.backgroundColor = "white";
+    }
 }
+// --------------------------- PUBLIC FUNCTIONS -------------------------------
 function tellStory() {
     // get pronouns
     var pronouns = new PronounSet(nameInput.value, subjective.value, objective.value, possessiveDeterminer.value, possessivePronoun.value, reflexive.value, personType.value, plural.checked);
@@ -176,4 +184,13 @@ function followMouse(event) {
         element.style.top = scrollY + event.clientY + 10 + "px";
     }
 }
-document.onmousemove = followMouse;
+/**
+ * Intializes the site
+ */
+function init() {
+    setInputElements(); // get elements
+    storySection.textContent = ""; // set story as blank
+    shuffle(DEFAULT_PRONOUN_SETS); // shuffle the pronoun list
+    setPlaceholders(); // set placeholder hints
+    document.onmousemove = followMouse;
+}

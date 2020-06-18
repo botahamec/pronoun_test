@@ -90,7 +90,7 @@ class Story {
 			start = nStory.indexOf('{');
 			end = nStory.indexOf('}');
 
-			if (start == -1 || end == -1) {break;}
+			if (start === -1 || end === -1) {break;}
 
 			const choicesStr = nStory.substring(start, end + 1);
 			const choices = nStory.substring(start + 1, end).split('/', 2);
@@ -180,6 +180,7 @@ function shuffle<T>(list: Array<T>) {
 
 function setInputElements() {
 	const getElement = (id: string) => document.getElementById(id);
+
 	storySection = getElement("story");
 	nameInput = <HTMLInputElement>getElement("name");
 	subjective = <HTMLInputElement>getElement("sub");
@@ -189,6 +190,16 @@ function setInputElements() {
 	reflexive = <HTMLInputElement>getElement("r");
 	personType = <HTMLInputElement>getElement("ty");
 	plural = <HTMLInputElement> getElement("plural");
+
+	const setChangeEvent = (box: HTMLInputElement) => box.onchange = checkFilledEvent;
+
+	setChangeEvent(nameInput);
+	setChangeEvent(subjective);
+	setChangeEvent(objective);
+	setChangeEvent(possessiveDeterminer);
+	setChangeEvent(possessivePronoun);
+	setChangeEvent(reflexive);
+	setChangeEvent(personType);
 }
 
 function setPlaceholders() {
@@ -211,17 +222,18 @@ function setPlaceholders() {
 	setPlaceholder(personType, e => e.personType);
 }
 
-// --------------------------- PUBLIC FUNCTIONS -------------------------------
+function checkFilledEvent(event: Event) {
 
-/**
- * Intializes the site
- */
-function init() {
-	setInputElements(); // get elements
-	storySection.textContent = ""; // set story as blank
-	shuffle(DEFAULT_PRONOUN_SETS); // shuffle the pronoun list
-	setPlaceholders(); // set placeholder hints
+	const box = <HTMLInputElement>event.target;
+
+	if (box.value === "") {
+		box.style.backgroundColor = "pink";
+	} else {
+		box.style.backgroundColor = "white";
+	}
 }
+
+// --------------------------- PUBLIC FUNCTIONS -------------------------------
 
 function tellStory() {
 
@@ -252,4 +264,13 @@ function followMouse(event: MouseEvent) {
 	}
 }
 
-document.onmousemove = followMouse;
+/**
+ * Intializes the site
+ */
+function init() {
+	setInputElements(); // get elements
+	storySection.textContent = ""; // set story as blank
+	shuffle(DEFAULT_PRONOUN_SETS); // shuffle the pronoun list
+	setPlaceholders(); // set placeholder hints
+	document.onmousemove = followMouse;
+}
