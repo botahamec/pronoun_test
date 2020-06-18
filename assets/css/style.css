@@ -3,6 +3,13 @@
 	padding: 1%;
 	margin: 1%;
 	box-shadow: rgb(91, 62, 123) 6px 6px 6px;
+	display: inline-block;
+}
+
+.textBox {
+	background-color: white;
+	border-style: solid;
+	border-color: rgb(194, 194, 255);
 	min-width: 165px;
 }
 
