@@ -28,6 +28,30 @@
 	box-shadow: rgb(91, 62, 123) 6px 6px 6px;
 }
 
+#nav {
+	background-color: rgb(128, 255, 255);
+	box-shadow: rgb(91, 62, 123) 6px 6px 6px;
+	margin: 1%;
+	margin-bottom: 0;
+	padding: 1%;
+}
+
+#nav a {
+	background-color: rgb(255, 192, 192);
+	color: black;
+	text-decoration: none;
+	padding: 1%;
+	box-shadow: rgb(64, 128, 128) 1px 1px 1px;
+}
+
+#nav a:hover {
+	background-color: rgb(255, 192, 128);
+	color: black;
+	text-decoration: none;
+	padding: 1%;
+	box-shadow: rgb(64, 128, 128) 2px 2px 2px;
+}
+
 #footer {
 	background-color: rgb(238, 228, 88);
 	padding: 1%;
@@ -43,12 +67,15 @@
 	display: none;
 }
 
-.formInput {
-	padding: 2%;
-	min-width: fit-content;
+@media only screen and (max-width: 600px) {
+	#options {
+		width: 96%;
+		display: block;
+	}
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 768px) {
+
 	#container {
 	    display: flex;
 	}
@@ -93,4 +120,13 @@ body {
 
 input {
 	min-width: fit-content;
+}
+
+.change {
+	background-color: rgb(133, 133, 255);
+	padding: 1%;
+	margin: 1%;
+	box-shadow: rgb(128, 71, 71) 3px 3px 3px;
+	display: inline-block;
+	width: 96%;
 }
