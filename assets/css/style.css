@@ -121,3 +121,12 @@ body {
 input {
 	min-width: fit-content;
 }
+
+.change {
+	background-color: rgb(133, 133, 255);
+	padding: 1%;
+	margin: 1%;
+	box-shadow: rgb(128, 71, 71) 3px 3px 3px;
+	display: inline-block;
+	width: 96%;
+}
