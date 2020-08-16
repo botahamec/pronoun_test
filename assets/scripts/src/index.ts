@@ -26,6 +26,9 @@ class PronounSet {
 	/** Enby/Girl/Boy */
 	public personType: string;
 
+	/* Whether to use "a" or "an" when describing the person type */
+	public aOrAn: string;
+
 	public constructor(name: string,
 	                   subjective: string,
 					   objective: string,
@@ -41,6 +44,20 @@ class PronounSet {
 		this.possessivePronoun = possessivePronoun.toLowerCase();
 		this.reflexive = reflexive.toLowerCase();
 		this.personType = personType.toLowerCase();
+
+		function startsWith(check: string, characters: Array<string>): boolean {
+			for (let character of characters) {
+				if (check.startsWith(character)) return true;
+			}
+
+			return false;
+		}
+
+		if (startsWith(this.personType, ['a', 'e', 'i', 'o', 'u'])) {
+			this.aOrAn = 'an';
+		} else {
+			this.aOrAn = 'a';
+		}
 	}
 
 	public getArticle(): string {
@@ -83,6 +100,7 @@ class Story {
 		nStory = applyFilter(nStory, "possPro", s => s.possessivePronoun);
 		nStory = applyFilter(nStory, "reflexive", s => s.reflexive);
 		nStory = applyFilter(nStory, "personType", s => s.personType);
+		nStory = applyFilter(nStory, "a", s => s.aOrAn);
 
 		let start = 0;
 		let end = 0;
@@ -127,7 +145,7 @@ const STORIES: string[] = [
 	"Hey! Come sit with us, {Name}! I'll introduce {objective}. {Subjective} {is/are} {Name}. {PossDet} interests are kinda the same as mine, hehe. Except, {subjective} {doesn't/don't} talk to {reflexive} like I do 😳. Anyway... I have some time later today. I'll probably hang out with my favorite {personType}. My time is all {possPro}.",
 	"{Name} was the first to wake on Christmas morning. For a moment the {personType} felt {reflexive} as disappointed as {subjective} {was/were} long ago. Then {subjective} remembered {possDet} mother's promise and, slipping {possDet} hand under {possDet} pillow, drew out a little book. It was that beautiful story of the best life that could ever be {possPro}, and {Name} felt that it was a true guidebook for any pilgrim going on a long journey.",
 	"{Subjective} left the cottage and walked through the trees until {subjective} found a little spring of clear water, where {Name} drank and bathed and ate {reflexive} breakfast. {Name} saw there was not much bread left in {possDet} basket for {reflexive}, and the {personType} was thankful the Scarecrow did not have to eat anything, for there was scarcely enough for {objective} and Toto for the day. The rest of the food would be {possPro} and Toto's.",
-	"The fence isn't anything that will stop a {personType}. {Name} tossed {possDet} pack and coil of rope over it and started climbing. {Subjective} caught {possDet} shirt as they went over, and had to stop for a moment to ease {reflexive} off. Then {subjective} dropped lightly to the grass on the other side. Victory is {possPro}!"
+	"The fence isn't anything that will stop {a} {personType}. {Name} tossed {possDet} pack and coil of rope over it and started climbing. {Subjective} caught {possDet} shirt as they went over, and had to stop for a moment to ease {reflexive} off. Then {subjective} dropped lightly to the grass on the other side. Victory is {possPro}!"
 ]
 
 // Gender-neutral reflexive pronouns
